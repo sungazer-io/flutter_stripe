@@ -1,21 +1,27 @@
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+
 import '../js/js.dart' as s;
 
 extension SetupIntentExtension on s.SetupIntent {
   SetupIntent parse() {
-    throw UnimplementedError();
-    // TODO(jaime) : Add support for setup intents
-    // ignore: dead_code
+    // throw UnimplementedError();
+    // // TODO(jaime) : Add support for setup intents
+    // // ignore: dead_code
     return SetupIntent(
       id: id,
       created: created.toString(),
-      status: '',
+      status: status,
       clientSecret: client_secret,
       livemode: livemode,
       paymentMethodId: payment_method,
       description: description,
       // LastPaymentError? lastPaymentError,
-      usage: '', paymentMethodTypes: [],
+      usage: usage,
+      // TODO(saverio): actually parse this
+      paymentMethodTypes: [
+        PaymentMethodType.Card,
+      ],
+      nextAction: next_action,
     );
   }
 }
